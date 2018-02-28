@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Hoc from './../../../hoc/Hoc';
+import Button from './../../UI/Button/Button';
 
 const orderSummary = (props) => {
 
@@ -15,6 +16,14 @@ const orderSummary = (props) => {
             <ul>
                 {ingredientsSummary}
             </ul>
+            <p>Total price: <strong>{props.totalPrice.toFixed(2)}</strong></p>
+            <p>Continue to checkout?</p>
+            <Button
+                btnType="Danger"
+                clicked={props.cancelOrder}>CANCEL</Button>
+            <Button
+                btnType="Success"
+                clicked={props.continueOrder}>CONTINUE</Button>
         </Hoc>
     );
 };

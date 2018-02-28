@@ -61,12 +61,24 @@ class BurgerBuilder extends Component {
     openModalHandler = () => {
         this.setState({ openModal: true });
     }
+
+    closeModalHandler = () => {
+        this.setState({ openModal: false });
+    }
+
+    continueOrderHandler = () => {
+        alert('CONTINUE');
+    }
     
     render() {
         return (
             <Hoc>
-                <Modal openModal={this.state.openModal}>
-                    <OrderSummary ingredients={this.state.ingredients} />
+                <Modal openModal={this.state.openModal} closeModalHandler={this.closeModalHandler}>
+                    <OrderSummary 
+                        ingredients={this.state.ingredients}
+                        cancelOrder={this.closeModalHandler}
+                        continueOrder={this.continueOrderHandler}
+                        totalPrice={this.state.totalPrice} />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls 
